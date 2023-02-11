@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  template-mongodb:
+    container_name: template-mongodb
+    image: mongo:6.0.3
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./data/mongodb:/data/db
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - ${MONGO_PORT}:${MONGO_PORT}
+    expose:
+      - ${MONGO_PORT}
+    command: mongod --port ${MONGO_PORT}
+
+  template-redis:
+    container_name: template-redis
+    image: redis:7.0-alpine
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./data/redis:/data
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - ${REDIS_PORT}:${REDIS_PORT}
+    expose:
+      - ${REDIS_PORT}
+    command: redis-server --port ${REDIS_PORT}

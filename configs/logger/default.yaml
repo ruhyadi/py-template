@@ -1,0 +1,21 @@
+# Logging configuration for the default logger
+
+level: INFO # Log level
+
+# Custom log levels
+custom_level:
+  API:
+    level: 21
+    color: blue
+  REDIS:
+    level: 22
+    color: green
+  MONGO:
+    level: 23
+    color: green
+  SQL:
+    level: 24
+    color: green
+  ENGINE:
+    level: 25
+    color: blue
